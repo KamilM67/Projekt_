@@ -22,3 +22,24 @@ set(HEADERS
     Projectile.h
     Tower.h
 )
+
+add_executable(TowerDefense ${SOURCES} ${HEADERS}
+    Menu.cpp
+    Menu.h)
+
+target_link_libraries(TowerDefense sfml-graphics sfml-window sfml-system)
+if(WIN32)
+    add_custom_command(TARGET TowerDefense POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy_if_different
+        "${SFML_DIR}/../../../bin/sfml-graphics-2.dll"
+        "${SFML_DIR}/../../../bin/sfml-window-2.dll"
+        "${SFML_DIR}/../../../bin/sfml-system-2.dll"
+        $<TARGET_FILE_DIR:TowerDefense>)
+endif()
+add_custom_command(TARGET TowerDefense POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_if_different
+    "${CMAKE_CURRENT_SOURCE_DIR}/arial.ttf"
+    $<TARGET_FILE_DIR:TowerDefense>)
+
+
+
