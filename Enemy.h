@@ -7,28 +7,24 @@
 // klasa reprezentujaca przeciwnika dziedziczaca po gameobject
 class Enemy : public GameObject {
 private:
-    std::vector<sf::Vector2f> mapPath; // wektor punktow tworzacych sciezke po ktorej idzie wrog
-    size_t currentPathIndex;           // indeks punktu sciezki do ktorego aktualnie zmierza wrog
-    sf::CircleShape shape;             // graficzny ksztalt przeciwnika (kolo)
-    float speed; float hp; float maxHp; // predkosc, aktualne zdrowie oraz maksymalne zdrowie wroga
-    bool dead; bool boss;              // flagi okreslajace czy wrog jest martwy oraz czy jest bossem
-
+    std::vector<sf::Vector2f> mapPath; // punkty sciezki na mapie
+    size_t currentPathIndex;           // aktualny indeks punktu do ktorego idzie wrog
+    sf::CircleShape shape;             // ksztalt graficzny wroga
+    float speed; float hp; float maxHp; // statystyki predkosci i zdrowia
+    bool dead; bool boss;              // flagi stanu zycia i typu jednostki
 public:
-    // konstruktor przyjmujacy sciezke, predkosc oraz punkty zycia
+    // konstruktor wroga
     Enemy(const std::vector<sf::Vector2f>& mapPath, float speed, float hp);
-
-    // nadpisane funkcje logiczne i graficzne
+    // aktualizacja logiki i rysowanie okna
     void update(float dt) override;
     void draw(sf::RenderWindow& window) override;
-
-    // metody dostepowe (gettery) do sprawdzania stanu i pozycji wroga
+    // gettery stanu i pozycji
     bool isDead() { return dead; }
     bool isBoss() { return boss; }
     sf::Vector2f getPosition() { return shape.getPosition(); }
     sf::FloatRect getGlobalBounds() { return shape.getGlobalBounds(); }
-
-    // metody do modyfikacji stanu wroga
-    void setBossAppearance(); // zmienia wyglad wroga na bossa
-    void takeDamage(float amount); // zadaje obrazenia wrogowi
+    // metody do zmiany wygladu i przyjmowania obrazen
+    void setBossAppearance();
+    void takeDamage(float amount);
 };
 #endif
