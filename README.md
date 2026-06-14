@@ -16,3 +16,5 @@ Opcja Menu w którym można wybrać jeden z 3 poziomow trudności (easy,medium,h
 Zróżnicowane mapy oraz zróżnicowane wieże
 Implementacja "Pozycji" w których można umieszczać wieże
 Funckja Wygranej lub Przegranej, po wygranej lub przegranej wyswietla się napis "YOU WIN" albo "GAME OVER" wyswietla się aktualna tablica wynikow oraz opcja "play again" lub "main menu"
+
+LINK DO FILMU: https://youtu.be/koIlKyOBewU
